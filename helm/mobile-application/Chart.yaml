@@ -1,0 +1,10 @@
+apiVersion: v2
+name: my-app
+description: A Helm chart for a PostgreSQL database, web app, Ingress, and Ingress controller
+version: 0.1.0
+
+dependencies:
+- name: postgresql
+  version: 12.8.2
+  repository: https://charts.bitnami.com/bitnami
+

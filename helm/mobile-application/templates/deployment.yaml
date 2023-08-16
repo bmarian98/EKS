@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+spec:
+  selector:
+      matchLabels:
+        app: webapp
+  replicas: {{ .Values.ReplicaCount }}
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+        - name: webapp
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          resources:
+            limits:
+              memory: "128Mi"  # Maximum memory limit
+              cpu: "200m"      # Maximum CPU limit
+            requests:
+              memory: "64Mi"  # Initial memory request
+              cpu: "100m"      # Initial CPU request
+          env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: "pg"
+          - name: DB_URL
+            value: "jdbc:postgresql://postgres-svc:5432/test"
+          - name: DB_USER
+            value: {{ .Values.postgresql.postgresqlUsername }}
+          - name: DB_PASS
+            value: {{ .Values.postgresql.postgresqlPassword }}
+            ports:
+              - containerPort: 8080

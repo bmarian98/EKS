@@ -1,0 +1,19 @@
+replicaCount: 1
+
+image:
+  repository: marian14/web_app
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+
+postgresql:
+  enabled: true
+  postgresqlDatabase: test
+  postgresqlUsername: myuser
+  postgresqlPassword: mypassword

@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: devops-webapp-svc
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    run: devops-webapp
+  type: NodePort
+
+---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: postgres
+# spec:
+#   selector:
+#     app: postgres
+#   ports:
+#   - protocol: TCP
+#     port: 5432
+#     targetPort: 5432
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+spec:
+  selector:
+    app: mysql
+  ports:
+  - protocol: TCP
+    port: 3306
+    targetPort: 3306

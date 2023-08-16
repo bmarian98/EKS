@@ -1,0 +1,64 @@
+
+roleMappings:
+- groups:
+  - "system:bootstrappers"
+  - "system:nodes"
+  - "DevOps-Internship-2023"
+  rolearn: "arn:aws:iam::721078768257:role/eks-node-group-example"
+  username: "system:node:{{EC2PrivateDNSName}}"
+userMappings:
+- userarn: "arn:aws:iam::721078768257:user/bogdan.cimpeanu"
+  username: "bogdan.cimpeanu"
+  groups:
+  - "system:masters"
+  - "DevOps-Internship-2023"
+- userarn: "arn:aws:iam::721078768257:user/bogdan.socaciu"
+  username: "bogdan.socaciu"
+  groups:
+  - "system:masters"
+  - "DevOps-Internship-2023"
+- userarn: "arn:aws:iam::721078768257:user/calin.nicu"
+  username: "calin.nicu"
+  groups:
+  - "system:masters"
+  - "DevOps-Internship-2023"
+- userarn: "arn:aws:iam::721078768257:user/ionut.dobre"
+  username: "ionut.dobre"
+  groups:
+  - "system:masters"
+  - "DevOps-Internship-2023"
+- userarn: "arn:aws:iam::721078768257:user/marian.bodnar"
+  username: "marian.bodnar"
+  groups:
+  - "system:masters"
+  - "DevOps-Internship-2023"
+- userarn: "arn:aws:iam::721078768257:user/marius.ghebuta"
+  username: "marius.ghebuta"
+  groups:
+  - "system:masters"
+  - "DevOps-Internship-2023"
+- userarn: "arn:aws:iam::721078768257:user/mihai.stanciu"
+  username: "mihai.stanciu"
+  groups:
+  - "system:masters"
+  - "DevOps-Internship-2023"
+- userarn: "arn:aws:iam::721078768257:user/radu.marin"
+  username: "radu.marin"
+  groups:
+  - "system:masters"
+  - "DevOps-Internship-2023"
+- userarn: "arn:aws:iam::721078768257:user/service-internship"
+  username: "service-internship"
+  groups:
+  - "system:masters"
+  - "DevOps-Internship-2023"
+- userarn: "arn:aws:iam::721078768257:user/vlad.mihaescu"
+  username: "vlad.mihaescu"
+  groups:
+  - "system:masters"
+  - "DevOps-Internship-2023"
+- userarn: "arn:aws:iam::721078768257:user/vlad.ursache"
+  username: "vlad.ursache"
+  groups:
+  - "system:masters"
+  - "DevOps-Internship-2023"

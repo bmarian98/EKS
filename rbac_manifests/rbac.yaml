@@ -1,0 +1,40 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: admin-role
+rules:
+- apiGroups: [""]
+  resources: ["*"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-group-binding
+subjects:
+- kind: Group
+  name: arn:aws:iam::721078768257:group/DevOps-Internship-2023
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: admin-role
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user-binding
+subjects:
+- kind: User
+  name: arn:aws:iam::721078768257:user/bogdan.socaciu
+  apiGroup: rbac.authorization.k8s.io
+- kind: User
+  name: arn:aws:iam::721078768257:user/marius.ghebuta
+  apiGroup: rbac.authorization.k8s.io
+- kind: User
+  name: arn:aws:iam::721078768257:user/radu.marin
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: admin-role
+  apiGroup: rbac.authorization.k8s.io

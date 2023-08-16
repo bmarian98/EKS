@@ -1,0 +1,86 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: postgres
+# spec:
+#   selector:
+#     matchLabels:
+#       app: postgres
+#   replicas: 1
+#   template:
+#     metadata:
+#       labels:
+#         app: postgres
+#     spec:
+#       containers:
+#       - name: devops-webapp-db
+#         image: postgres:latest
+#         env:
+#         - name: POSTGRES_DB
+#           value: test
+#         - name: POSTGRES_USER
+#           valueFrom:
+#             secretKeyRef:
+#               name: db-credentials
+#               key: username
+#         - name: POSTGRES_PASSWORD
+#           valueFrom:
+#             secretKeyRef:
+#               name: db-credentials
+#               key: password
+#         ports:
+#         - containerPort: 5432
+#         volumeMounts:
+#         - mountPath: /volume/data
+#           name: postgredb
+#       volumes:
+#       - name: postgredb
+#         persistentVolumeClaim:
+#           claimName: postgresql-data-claim
+
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: devops-webapp-db
+        image: mysql:8
+        env:
+        - name: MYSQL_DATABASE
+          value: test
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: username
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: password
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: password
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - mountPath: /volume/data
+          name: mysqldb
+      volumes:
+      - name: mysqldb
+        persistentVolumeClaim:
+          claimName: mysql-data-claim
