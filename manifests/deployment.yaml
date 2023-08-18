@@ -15,18 +15,22 @@ spec:
       containers:
       - name: devops-webapp
         image: marian14/web_app
+        envFrom:
+        - secretRef:
+            name: db-credentials
         env:
         - name: SPRING_PROFILES_ACTIVE
           value: "pg"
         - name: DB_URL
-          value: "jdbc:postgresql://postgres:5432/test"
+          value: jdbc:postgresql://postgres:5432/test
         - name: DB_USER
           value: marian
-        - name: DB_PASS
-          valueFrom:
-            secretKeyRef:
-              name: db-credentials
-              key: password
+        # - name: DB_PASS
+        #   #value: test1234
+        #   valueFrom:
+        #     secretKeyRef:
+        #       key: password
+        #       name: db-credentials
         ports:
         - containerPort: 8080
 

@@ -19,6 +19,7 @@ spec:
         - name: POSTGRES_USER
           value: marian
         - name: POSTGRES_PASSWORD
+          # value: test1234
           valueFrom:
             secretKeyRef:
               key: password
